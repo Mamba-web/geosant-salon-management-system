@@ -4,6 +4,7 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -11,107 +12,162 @@ session_start();
 
 <title>GeoSant Unisex Salon | Login</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 <link rel="stylesheet" href="../assets/css/login.css">
 
-
 </head>
+
 <body>
 
-<div class="login-container">
+<div class="page-wrapper">
 
-    <!-- Left Side -->
+    <!-- LEFT SIDE -->
+
     <div class="left-panel">
 
         <div class="overlay">
 
-            <img src="../assets/images/logo.png" class="logo">
+            <div class="branding">
 
-            <h1>GeoSant</h1>
+                <img src="../assets/images/logo.png" alt="GeoSant Logo" class="logo">
 
-            <h5>Unisex Salon Management System</h5>
+                <h1>GeoSant</h1>
 
-            <p>
-                Manage appointments, customers,
-                staff and payments effortlessly.
-            </p>
+                <h3>Unisex Salon</h3>
+
+                <p class="tagline">
+                    Beauty Begins With Great Management
+                </p>
+
+                <div class="features">
+
+                    <div class="feature">
+
+                        <i class="fas fa-calendar-check"></i>
+
+                        <span>Appointment Management</span>
+
+                    </div>
+
+                    <div class="feature">
+
+                        <i class="fas fa-users"></i>
+
+                        <span>Customer Management</span>
+
+                    </div>
+
+                    <div class="feature">
+
+                        <i class="fas fa-user-tie"></i>
+
+                        <span>Staff Management</span>
+
+                    </div>
+
+                    <div class="feature">
+
+                        <i class="fas fa-money-bill-wave"></i>
+
+                        <span>Payment Management</span>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
     </div>
 
-    <!-- Right Side -->
+    <!-- RIGHT SIDE -->
 
     <div class="right-panel">
 
         <div class="login-card">
 
-            <h2>Welcome Back</h2>
+            <div class="card-top">
 
-            <p>Please login to continue.</p>
+                <h2>Welcome Back</h2>
+
+                <p>
+                    Sign in to continue to your dashboard.
+                </p>
+
+            </div>
 
             <?php if(isset($_SESSION['error'])){ ?>
 
-<div class="alert alert-danger">
+            <div class="error-message">
 
-    <?php
-        echo $_SESSION['error'];
-        unset($_SESSION['error']);
-    ?>
+                <i class="fas fa-circle-exclamation"></i>
 
-</div>
+                <?php
+                echo $_SESSION['error'];
+                unset($_SESSION['error']);
+                ?>
 
-<?php } ?>
+            </div>
+
+            <?php } ?>
 
             <form action="login_process.php" method="POST">
 
-                <div class="mb-3">
+                <!-- USERNAME -->
 
-                    <label>Username</label>
+                <div class="input-box">
 
-                    <div class="input-group">
+                    <label for="username">
 
-                        <span class="input-group-text">
-                            <i class="fas fa-user"></i>
-                        </span>
+                        Username
+
+                    </label>
+
+                    <div class="input-field">
+
+                        <i class="fas fa-user"></i>
 
                         <input
                         type="text"
+                        id="username"
                         name="username"
-                        class="form-control"
-                        placeholder="Enter username"
+                        placeholder="Enter your username"
                         required>
 
                     </div>
 
                 </div>
 
-                <div class="mb-3">
+                <!-- PASSWORD -->
 
-                    <label>Password</label>
+                <div class="input-box">
 
-                    <div class="input-group">
+                    <label for="password">
 
-                        <span class="input-group-text">
-                            <i class="fas fa-lock"></i>
-                        </span>
+                        Password
+
+                    </label>
+
+                    <div class="input-field">
+
+                        <i class="fas fa-lock"></i>
 
                         <input
                         type="password"
                         id="password"
                         name="password"
-                        class="form-control"
-                        placeholder="Enter password"
+                        placeholder="Enter your password"
                         required>
 
                         <button
-                        class="btn btn-outline-secondary"
                         type="button"
+                        class="toggle-password"
                         onclick="togglePassword()">
 
-                        <i class="fas fa-eye"></i>
+                            <i class="fas fa-eye"></i>
 
                         </button>
 
@@ -119,39 +175,57 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
                 </div>
 
-                <div class="d-flex justify-content-between">
+                <!-- OPTIONS -->
 
-                    <div>
+                <div class="options">
+
+                    <label class="remember">
 
                         <input
                         type="checkbox"
                         name="remember">
 
-                        Remember Me
+                        <span>Remember Me</span>
 
-                    </div>
+                    </label>
 
                     <a href="forgot_password.php">
+
                         Forgot Password?
+
                     </a>
 
                 </div>
 
-                <button
-                class="btn btn-primary w-100 mt-4">
+                <!-- LOGIN BUTTON -->
 
-                Login
+                <button
+                type="submit"
+                class="login-btn">
+
+                    Login
 
                 </button>
 
             </form>
 
-            <hr>
+            <div class="divider">
 
-            <p class="text-center">
+                <span></span>
+
+            </div>
+
+            <div class="bottom-text">
+
                 Need an account?
-                <b>Please contact the system administrator.</b>
-            </p>
+
+                <strong>
+
+                    Contact the System Administrator
+
+                </strong>
+
+            </div>
 
         </div>
 
@@ -159,8 +233,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 </div>
 
-<script src="../assets/js/bootstrap.bundle.min.js"></script>
 <script src="../assets/js/login.js"></script>
 
 </body>
+
 </html>

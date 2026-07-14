@@ -121,7 +121,7 @@ body{
 
 <h2>GeoSant Unisex Salon</h2>
 
-<p>Forgot Password?🤣</p>
+<p>Forgot Password?</p>
 
 </div>
 

@@ -80,7 +80,7 @@ if ($failed >= 3) {
         WHERE id = {$user['id']}
     ");
 
-    $_SESSION['error'] = "Too many failed login attempts. Your account has been locked for 15 minutes🤣🥹.";
+    $_SESSION['error'] = "Too many failed login attempts. Your account has been locked for 15 minutes.";
 
 } else {
 
@@ -90,7 +90,7 @@ if ($failed >= 3) {
         WHERE id = {$user['id']}
     ");
 
-    $_SESSION['error'] = "Invalid username or password. Attempt $failed of 3😒.";
+    $_SESSION['error'] = "Invalid username or password. Attempt $failed of 3.";
 }
 
 header("Location: login.php");
