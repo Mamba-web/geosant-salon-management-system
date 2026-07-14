@@ -1,0 +1,72 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../auth/login.php");
+    exit();
+}
+
+include("../includes/header.php");
+include("../includes/sidebar.php");
+include("../includes/navbar.php");
+?>
+
+<div class="main-content">
+
+<div class="container-fluid">
+    <div class="card shadow-sm">
+    <div class="card-header">
+    <h4>Add New Staff</h4>
+</div>
+
+<div class="card-body">
+    <form action="store.php" method="POST">
+        <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <input type="text" name="full_name" class="form-control" required>
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Gender</label>
+      <select name="gender" class="form-select" required>
+        <option value="">Select Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+     </select>
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Phone Number</label>
+    <input type="text" name="phone" class="form-control" required>
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Role</label>
+        <select name="role" class="form-select" required>
+            <option value="">Select Role</option>
+            <option>Barber</option>
+            <option>Hair Stylist</option>
+            <option>Beautician</option>
+            <option>Receptionist</option>
+            <option>Manager</option>
+        </select>
+    </div>
+
+<button type="submit" class="btn btn-success">
+    Save Staff
+</button>
+
+    <a href="index.php" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<?php include("../includes/footer.php"); ?>
