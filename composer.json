@@ -1,0 +1,17 @@
+{
+    "name": "mamba/salon_management",
+    "autoload": {
+        "psr-4": {
+            "Mamba\\SalonManagement\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mamba-web",
+            "email": "fosteragbesi62@gmail.com"
+        }
+    ],
+    "require": {
+        "twilio/sdk": "^8.11"
+    }
+}

@@ -7,6 +7,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 include("../config/database.php");
+include("../includes/activity_log.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -14,24 +15,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = mysqli_real_escape_string($conn, $_POST['phone']);
     $gender = mysqli_real_escape_string($conn, $_POST['gender']);
 
+    if (!preg_match('/^[0-9]{10}$/', $phone)) {
+
+        $_SESSION['error'] = "Phone number must be exactly 10 digits.";
+
+        header("Location: create.php");
+        exit();
+    }
+
     $sql = "INSERT INTO customers (customer_name, phone, gender)
             VALUES ('$customer_name', '$phone', '$gender')";
 
-if (mysqli_query($conn, $sql)) {
+    if (mysqli_query($conn, $sql)) {
 
-    $_SESSION['success'] = "Customer added successfully.";
+        // Activity Log
+        logActivity(
+            $conn,
+            $_SESSION['user_id'],
+            $_SESSION['full_name'],
+            "Customers",
+            "Added customer: " . $customer_name
+        );
 
-    header("Location: index.php");
-    exit();
+        $_SESSION['success'] = "Customer added successfully.";
 
-} else {
+        header("Location: index.php");
+        exit();
 
-    $_SESSION['error'] = "Failed to add customer.";
+    } else {
 
-    header("Location: index.php");
-    exit();
+        $_SESSION['error'] = "Failed to add customer.";
 
-}
+        header("Location: index.php");
+        exit();
+
+    }
 
 } else {
 

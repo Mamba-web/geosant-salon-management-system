@@ -7,6 +7,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 include("../config/database.php");
+include("../includes/activity_log.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -24,6 +25,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             WHERE id='$id'";
 
     if (mysqli_query($conn, $sql)) {
+
+        // Activity Log
+        logActivity(
+            $conn,
+            $_SESSION['user_id'],
+            $_SESSION['full_name'],
+            "Staff",
+            "Updated staff: " . $full_name
+        );
 
         $_SESSION['success'] = "Staff updated successfully.";
 

@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('Africa/Accra');
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../auth/login.php");
@@ -69,14 +70,15 @@ include("../includes/navbar.php");
         <option value="Card">Card</option>
 
     </select>
-</div>
-    <div class="mb-3">
+
+<div class="mb-3">
     <label class="form-label">Payment Date</label>
+
     <input
-        type="date"
-        name="payment_date"
+        type="text"
         class="form-control"
-        required>
+        value="<?php echo date('l, d F Y   H:i:s'); ?>"
+        readonly>
 </div>
 
 <button type="submit" class="btn btn-success">

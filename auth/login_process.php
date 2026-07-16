@@ -1,6 +1,8 @@
 <?php
 session_start();
+
 include("../config/database.php");
+include("../includes/activity_log.php");
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     // Reset failed login attempts
@@ -103,6 +105,14 @@ exit();
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['full_name'] = $user['full_name'];
     $_SESSION['role'] = strtolower($user['role']);
+
+    logActivity(
+    $conn,
+    $_SESSION['user_id'],
+    $_SESSION['full_name'],
+    "Authentication",
+    "Logged into the system"
+);
 
     // Update last login
     mysqli_query($conn, "UPDATE users SET last_login = NOW() WHERE id = {$user['id']}");

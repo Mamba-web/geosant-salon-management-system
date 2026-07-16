@@ -1,7 +1,6 @@
 <?php
 require_once '../auth/check_auth.php';
 
-
 include("../config/database.php");
 
 // Dashboard Statistics

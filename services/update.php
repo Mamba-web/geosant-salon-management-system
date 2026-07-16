@@ -7,6 +7,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 include("../config/database.php");
+include("../includes/activity_log.php");
 
 $id = mysqli_real_escape_string($conn,$_POST['id']);
 $service_name = mysqli_real_escape_string($conn,$_POST['service_name']);
@@ -19,6 +20,15 @@ price='$price'
 WHERE id='$id'";
 
 if(mysqli_query($conn,$sql)){
+
+    // Activity Log
+    logActivity(
+        $conn,
+        $_SESSION['user_id'],
+        $_SESSION['full_name'],
+        "Services",
+        "Updated service: " . $service_name
+    );
 
     $_SESSION['success']="Service updated successfully.";
 

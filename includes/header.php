@@ -8,7 +8,7 @@ $settings = mysqli_fetch_assoc($settingsResult);
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head id="appBody">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

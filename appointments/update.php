@@ -7,6 +7,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 include("../config/database.php");
+include("../includes/activity_log.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -28,6 +29,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             WHERE id='$id'";
 
     if (mysqli_query($conn, $sql)) {
+
+        // Get customer name
+        $customer = mysqli_fetch_assoc(
+            mysqli_query($conn, "SELECT customer_name FROM customers WHERE id='$customer_id'")
+        );
+
+        logActivity(
+            $conn,
+            $_SESSION['user_id'],
+            $_SESSION['full_name'],
+            "Appointments",
+            "Updated appointment for: " . $customer['customer_name']
+        );
 
         $_SESSION['success'] = "Appointment updated successfully.";
 

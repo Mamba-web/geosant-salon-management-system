@@ -1,5 +1,8 @@
 <?php
 
+date_default_timezone_set("Africa/Accra");
+
+
 $host = "localhost";
 $username = "root";
 $password = "";

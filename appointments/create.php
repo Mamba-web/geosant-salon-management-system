@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('Africa/Accra');
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../auth/login.php");
@@ -23,20 +24,17 @@ include("../includes/navbar.php");
 ?>
 
 <div class="main-content">
-
 <div class="container-fluid">
 
-<div class="card shadow-sm">
-
-<div class="card-header">
-<h4>New Appointment</h4>
-</div>
+  <div class="card shadow-sm">
+    <div class="card-header">
+      <h4>New Appointment</h4>
+    </div>
 
 <div class="card-body">
-
 <form action="store.php" method="POST">
 
-<div class="mb-3">
+  <div class="mb-3">
 
 <label class="form-label">Customer</label>
 
@@ -107,10 +105,10 @@ include("../includes/navbar.php");
 <label class="form-label">Appointment Date</label>
 
 <input
-type="date"
-name="appointment_date"
+type="text"
 class="form-control"
-required>
+value="<?php echo date('d M Y'); ?>"
+readonly>
 
 </div>
 

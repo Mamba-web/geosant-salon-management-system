@@ -29,16 +29,25 @@ include("../includes/settings.php");
         <?php } ?>
 
         <?php if ($_SESSION['role'] == 'admin') { ?>
+            <li class="nav-item"><a href="../sms/index.php" class="nav-link"><i class="fas fa-comment-dots"></i>
+            <span>SMS History</span></a></li>
+        <?php } ?>
+
+        <?php if ($_SESSION['role'] == 'admin') { ?>
             <li><a href="../users/index.php"><i class="fas fa-users-cog"></i> Users</a></li>
         <?php } ?>
         
         <?php if($_SESSION['role'] == 'admin'){ ?>
             <li><a href="../settings/index.php"><i class="fas fa-cog"></i> Settings</a></li>
         <?php } ?>
+        
+        <?php if($_SESSION['role'] == 'admin'){ ?>
+        <li class="nav-item">
+    <a href="../activity_logs/index.php" class="nav-link"><i class="fas fa-history"></i><span>Activity Log</span></a>
+        </li>
+        <?php } ?>
 
-        <li><a href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-
-
+        <!-- <li><a href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li> -->
     </ul>
 
 </div>

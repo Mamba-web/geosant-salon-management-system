@@ -7,6 +7,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 include("../config/database.php");
+include("../includes/activity_log.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -15,10 +16,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = mysqli_real_escape_string($conn, $_POST['phone']);
     $role = mysqli_real_escape_string($conn, $_POST['role']);
 
+    if (!preg_match('/^[0-9]{10}$/', $phone)) {
+
+        $_SESSION['error'] = "Phone number must be exactly 10 digits.";
+
+        header("Location: create.php");
+        exit();
+    }
+
     $sql = "INSERT INTO staff (full_name, gender, phone, role)
             VALUES ('$full_name', '$gender', '$phone', '$role')";
 
     if (mysqli_query($conn, $sql)) {
+
+        // Activity Log
+        logActivity(
+            $conn,
+            $_SESSION['user_id'],
+            $_SESSION['full_name'],
+            "Staff",
+            "Added staff: " . $full_name
+        );
 
         $_SESSION['success'] = "Staff added successfully.";
 
@@ -39,3 +57,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
 
 }
+?>

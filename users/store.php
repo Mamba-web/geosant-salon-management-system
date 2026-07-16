@@ -2,6 +2,7 @@
 require_once '../auth/check_auth.php';
 
 include("../config/database.php");
+include("../includes/activity_log.php");
 
 if ($_SESSION['role'] != 'admin') {
     header("Location: ../dashboard/index.php");
@@ -56,16 +57,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES
             ('$full_name','$username','$email','$phone','$password','$role')";
 
-    if(mysqli_query($conn,$sql)){
+if(mysqli_query($conn,$sql)){
 
-        header("Location: index.php?success=added");
-        exit();
+    logActivity(
+        $conn,
+        $_SESSION['user_id'],
+        $_SESSION['full_name'],
+        "Users",
+        "Added user: " . $full_name . " (" . ucfirst($role) . ")"
+    );
 
-    }else{
+    header("Location: index.php?success=added");
+    exit();
 
-        echo "Error: ".mysqli_error($conn);
+}else{
 
-    }
+    echo "Error: ".mysqli_error($conn);
+
+}
 
 }else{
 

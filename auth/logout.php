@@ -1,6 +1,21 @@
 <?php
 session_start();
 include("../config/database.php");
+include("../includes/activity_log.php");
+
+
+// Record logout before destroying the session
+if (isset($_SESSION['user_id'])) {
+
+    logActivity(
+        $conn,
+        $_SESSION['user_id'],
+        $_SESSION['full_name'],
+        "Authentication",
+        "Logged out of the system"
+    );
+
+}
 
 // Remove remember token from database
 if (isset($_SESSION['user_id'])) {

@@ -79,18 +79,19 @@ if($search != ""){
 
 $totalPages = ceil($totalRows/$recordsPerPage);
 
+
 $result = mysqli_query($conn,$sql);
+
 
 include("../includes/header.php");
 include("../includes/sidebar.php");
 include("../includes/navbar.php");
-include("../includes/messages.php");
+
 ?>
 
 <div class="main-content">
 
 <div class="container-fluid">
-
 <?php include("../includes/messages.php"); ?>
 
 <div class="d-flex justify-content-between align-items-center mb-4">

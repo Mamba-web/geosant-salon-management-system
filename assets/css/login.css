@@ -30,7 +30,7 @@ LEFT PANEL
     position:relative;
 
     background:
-    linear-gradient(rgba(7,17,36,.72),rgba(7,17,36,.72)),
+    linear-gradient(rgba(7, 17, 36, 0.311),rgba(7, 17, 36, 0.352)),
     url("../images/login-bg.jpg");
 
     background-size:cover;

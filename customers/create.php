@@ -34,10 +34,15 @@ include("../includes/navbar.php");
 
                     <div class="mb-3">
                         <label class="form-label">Phone Number</label>
-                        <input type="text"
-                               name="phone"
-                               class="form-control"
-                               required>
+<input
+    type="text"
+    name="phone"
+    class="form-control"
+    maxlength="10"
+    minlength="10"
+    pattern="[0-9]{10}"
+    placeholder="0540706528"
+    required>
                     </div>
 
                     <div class="mb-3">

@@ -1,6 +1,8 @@
 <?php
 require_once "../auth/check_auth.php";
+
 include("../config/database.php");
+include("../includes/activity_log.php");
 
 // Only Admin can reset passwords
 if ($_SESSION['role'] != 'admin') {
@@ -38,6 +40,26 @@ $stmt = mysqli_prepare($conn, "
 mysqli_stmt_bind_param($stmt, "si", $hashedPassword, $id);
 
 if (mysqli_stmt_execute($stmt)) {
+
+// Get user's full name
+$result = mysqli_query(
+    $conn,
+    "SELECT full_name FROM users WHERE id=$id"
+);
+
+if($row = mysqli_fetch_assoc($result)){
+    $full_name = $row['full_name'];
+}else{
+    $full_name = "Unknown User";
+}
+
+logActivity(
+    $conn,
+    $_SESSION['user_id'],
+    $_SESSION['full_name'],
+    "Users",
+    "Reset password for user: " . $full_name
+);
 
     header("Location: index.php?success=password_reset");
     exit();

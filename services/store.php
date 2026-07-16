@@ -7,6 +7,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 include("../config/database.php");
+include("../includes/activity_log.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -17,6 +18,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('$service_name', '$price')";
 
     if (mysqli_query($conn, $sql)) {
+
+        // Activity Log
+        logActivity(
+            $conn,
+            $_SESSION['user_id'],
+            $_SESSION['full_name'],
+            "Services",
+            "Added service: " . $service_name
+        );
 
         $_SESSION['success'] = "Service added successfully.";
 

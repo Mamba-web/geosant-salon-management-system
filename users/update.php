@@ -7,6 +7,7 @@ if ($_SESSION['role'] != 'admin') {
 }
 
 include("../config/database.php");
+include("../includes/activity_log.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -27,16 +28,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 status = '$status'
             WHERE id = '$id'";
 
-    if (mysqli_query($conn, $sql)) {
+if (mysqli_query($conn, $sql)) {
 
-        header("Location: index.php?success=updated");
-        exit();
+logActivity(
+    $conn,
+    $_SESSION['user_id'],
+    $_SESSION['full_name'],
+    "Users",
+    "Updated user: " . $full_name
+);
 
-    } else {
+header("Location: index.php?success=updated");
+exit();
 
-        echo "Error: " . mysqli_error($conn);
+} else {
 
-    }
+echo "Error: " . mysqli_error($conn);
+
+}
 
 } else {
 
