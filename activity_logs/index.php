@@ -10,9 +10,8 @@ include("../config/database.php");
 
 $page_title = "Activity Log";
 
-/* =====================================
-   DASHBOARD STATISTICS
-===================================== */
+
+//    DASHBOARD STATISTICS
 
 $totalLogs = mysqli_fetch_assoc(
     mysqli_query($conn,"
