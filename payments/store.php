@@ -26,6 +26,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mysqli_query($conn, $sql)) {
 
+        // Automatically mark appointment as completed
+        mysqli_query($conn, "
+            UPDATE appointments
+            SET status = 'Completed'
+            WHERE id = '$appointment_id'
+        ");
+
         // Generate SMS
         sendSMS($appointment_id);
 
