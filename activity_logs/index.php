@@ -239,73 +239,67 @@ include("../includes/navbar.php");
 <!-- Search & Filter -->
 
 <div class="card border-0 shadow-sm mb-4">
-
     <div class="card-body">
+    <form method="GET">
+        <div class="row g-3">
+            <div class="col-md-6">
+            <input
+                type="text"
+                name="search"
+                class="form-control"
+                placeholder="Search user or activity..."
+                value="<?php echo htmlspecialchars($search); ?>">
 
-        <form method="GET">
+</div>
 
-            <div class="row g-3">
+<div class="col-md-4">
 
-                <div class="col-md-6">
+    <select
+        name="module"
+        class="form-select">
 
-                    <input
-                        type="text"
-                        name="search"
-                        class="form-control"
-                        placeholder="Search user or activity..."
-                        value="<?php echo htmlspecialchars($search); ?>">
+        <option value="">All Modules</option>
 
-                </div>
+        <option value="Customers" <?php if($module=="Customers") echo "selected"; ?>>
+            Customers
+        </option>
 
-                <div class="col-md-4">
+        <option value="Staff" <?php if($module=="Staff") echo "selected"; ?>>
+            Staff
+        </option>
 
-                    <select
-                        name="module"
-                        class="form-select">
+        <option value="Services" <?php if($module=="Services") echo "selected"; ?>>
+            Services
+        </option>
 
-                        <option value="">All Modules</option>
+        <option value="Appointments" <?php if($module=="Appointments") echo "selected"; ?>>
+            Appointments
+        </option>
 
-                        <option value="Customers" <?php if($module=="Customers") echo "selected"; ?>>
-                            Customers
-                        </option>
+        <option value="Payments" <?php if($module=="Payments") echo "selected"; ?>>
+            Payments
+        </option>
 
-                        <option value="Staff" <?php if($module=="Staff") echo "selected"; ?>>
-                            Staff
-                        </option>
+        <option value="Users" <?php if($module=="Users") echo "selected"; ?>>
+            Users
+        </option>
 
-                        <option value="Services" <?php if($module=="Services") echo "selected"; ?>>
-                            Services
-                        </option>
+        <option value="Authentication" <?php if($module=="Authentication") echo "selected"; ?>>
+            Authentication
+        </option>
+    </select>
 
-                        <option value="Appointments" <?php if($module=="Appointments") echo "selected"; ?>>
-                            Appointments
-                        </option>
+</div>
+<div class="col-md-2 d-grid">
+    <button class="btn btn-primary">
+        <i class="fas fa-search me-1"></i>
 
-                        <option value="Payments" <?php if($module=="Payments") echo "selected"; ?>>
-                            Payments
-                        </option>
-
-                        <option value="Users" <?php if($module=="Users") echo "selected"; ?>>
-                            Users
-                        </option>
-
-                        <option value="Authentication" <?php if($module=="Authentication") echo "selected"; ?>>
-                            Authentication
-                        </option>
-                    </select>
-
-                </div>
-                <div class="col-md-2 d-grid">
-                    <button class="btn btn-primary">
-
-                        <i class="fas fa-search me-1"></i>
-
-                        Search
-                    </button>
-                </div>
-            </div>
-        </form>
+            Search
+    </button>
+        </div>
     </div>
+</form>
+</div>
 </div>
 
 

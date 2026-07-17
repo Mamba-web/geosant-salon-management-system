@@ -9,13 +9,9 @@ if (!isset($_SESSION['user_id'])) {
 
 include("../config/database.php");
 
-// Customers
+
 $customers = mysqli_query($conn, "SELECT * FROM customers ORDER BY customer_name ASC");
-
-// Staff
 $staff = mysqli_query($conn, "SELECT * FROM staff ORDER BY full_name ASC");
-
-// Services
 $services = mysqli_query($conn, "SELECT * FROM services ORDER BY service_name ASC");
 
 include("../includes/header.php");

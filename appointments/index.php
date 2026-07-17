@@ -94,65 +94,50 @@ Manage salon appointments
 </div>
 
 <div>
+    <a href="print.php" target="_blank" class="btn btn-dark me-2">
+    <i class="fas fa-print"></i> Print
+    </a>
 
-<a href="print.php" target="_blank" class="btn btn-dark me-2">
-<i class="fas fa-print"></i> Print
-</a>
+    <a href="export_excel.php" class="btn btn-success me-2">
+    <i class="fas fa-file-excel"></i> Excel
+    </a>
 
-<a href="export_excel.php" class="btn btn-success me-2">
-<i class="fas fa-file-excel"></i> Excel
-</a>
-
-<a href="create.php" class="btn btn-primary">
-<i class="fas fa-plus"></i> New Appointment
-</a>
+    <a href="create.php" class="btn btn-primary">
+    <i class="fas fa-plus"></i> New Appointment
+    </a>
 
 </div>
-
 </div>
 
 <div class="card mb-4">
-
 <div class="card-body">
+     <form method="GET">
+      <div class="row">
+        <div class="col-md-10">
 
-<form method="GET">
-
-<div class="row">
-
-<div class="col-md-10">
-
-<input
-type="text"
-name="search"
-class="form-control"
-placeholder="Search customer, staff or service..."
-value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+          <input
+            type="text"
+            name="search"
+            class="form-control"
+            placeholder="Search customer, staff or service..."
+            value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
 
 </div>
 
 <div class="col-md-2">
-
 <div class="d-flex gap-2">
 
-<button class="btn btn-primary flex-fill">
-<i class="fas fa-search"></i>
-</button>
-
-<a href="index.php" class="btn btn-secondary">
-<i class="fas fa-rotate-left"></i>
-</a>
+<button class="btn btn-primary flex-fill"><i class="fas fa-search"></i></button>
+     <a href="index.php" class="btn btn-secondary">
+        <i class="fas fa-rotate-left"></i>
+    </a>
 
 </div>
-
-</div>
-
-</div>
-
+    </div>
+    </div>
 </form>
-
-</div>
-
-</div>
+       </div>
+       </div>
 
 <div class="row mb-4">
 

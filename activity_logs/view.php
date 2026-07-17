@@ -51,7 +51,7 @@ include("../includes/navbar.php");
         </p>
     </div>
 
-    <div>
+<div>
 
         <a href="print.php?id=<?php echo $log['id']; ?>"
            target="_blank"

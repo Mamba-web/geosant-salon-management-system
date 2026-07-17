@@ -128,24 +128,22 @@ value="<?php echo $service['id']; ?>"
 <div class="mb-3">
 
 <label>Date</label>
-
-<input
-type="date"
-name="appointment_date"
-class="form-control"
-value="<?php echo $row['appointment_date']; ?>">
+    <input
+       type="date"
+       name="appointment_date"
+       class="form-control"
+       value="<?php echo $row['appointment_date']; ?>">
 
 </div>
 
 <div class="mb-3">
 
 <label>Time</label>
-
-<input
-type="time"
-name="appointment_time"
-class="form-control"
-value="<?php echo $row['appointment_time']; ?>">
+    <input
+       type="time"
+       name="appointment_time"
+       class="form-control"
+       value="<?php echo $row['appointment_time']; ?>">
 
 </div>
 
@@ -154,33 +152,28 @@ value="<?php echo $row['appointment_time']; ?>">
 <label>Status</label>
 
 <select name="status" class="form-select">
+    <option value="Pending"
+      <?php if($row['status']=="Pending") echo "selected"; ?>>
+            Pending
+    </option>
 
-<option value="Pending"
-<?php if($row['status']=="Pending") echo "selected"; ?>>
-Pending
-</option>
+    <option value="Completed"
+      <?php if($row['status']=="Completed") echo "selected"; ?>>
+           Completed
+    </option>
 
-<option value="Completed"
-<?php if($row['status']=="Completed") echo "selected"; ?>>
-Completed
-</option>
-
-<option value="Cancelled"
-<?php if($row['status']=="Cancelled") echo "selected"; ?>>
-Cancelled
-</option>
-
+    <option value="Cancelled"
+       <?php if($row['status']=="Cancelled") echo "selected"; ?>>
+         Cancelled
+    </option>
 </select>
-
 </div>
 
 <button class="btn btn-success">
 Update Appointment
 </button>
 
-<a href="index.php" class="btn btn-secondary">
-Cancel
-</a>
+<a href="index.php" class="btn btn-secondary">Cancel</a>
 
 </form>
 
