@@ -140,61 +140,41 @@ Manage salon appointments
        </div>
 
 <div class="row mb-4">
+    <div class="col-md-4">
+    <div class="card border-0 shadow-sm text-center">
+    <div class="card-body">
+        <i class="fas fa-calendar-check fa-2x text-primary mb-2"></i>
+        <h3><?php echo $totalAppointments['total']; ?></h3>
 
-<div class="col-md-4">
+        <p class="text-muted mb-0">Total Appointments</p>
 
-<div class="card border-0 shadow-sm text-center">
-
-<div class="card-body">
-
-<i class="fas fa-calendar-check fa-2x text-primary mb-2"></i>
-
-<h3><?php echo $totalAppointments['total']; ?></h3>
-
-<p class="text-muted mb-0">Total Appointments</p>
-
-</div>
-
-</div>
-
+    </div>
+    </div>
 </div>
 
 <div class="col-md-4">
-
 <div class="card border-0 shadow-sm text-center">
-
 <div class="card-body">
-
-<i class="fas fa-hourglass-half fa-2x text-warning mb-2"></i>
-
-<h3><?php echo $pendingAppointments['total']; ?></h3>
+    <i class="fas fa-hourglass-half fa-2x text-warning mb-2"></i>
+    <h3><?php echo $pendingAppointments['total']; ?></h3>
 
 <p class="text-muted mb-0">Pending</p>
 
-</div>
-
-</div>
-
+    </div>
+    </div>
 </div>
 
 <div class="col-md-4">
-
 <div class="card border-0 shadow-sm text-center">
-
 <div class="card-body">
-
-<i class="fas fa-check-circle fa-2x text-success mb-2"></i>
-
-<h3><?php echo $completedAppointments['total']; ?></h3>
+    <i class="fas fa-check-circle fa-2x text-success mb-2"></i>
+    <h3><?php echo $completedAppointments['total']; ?></h3>
 
 <p class="text-muted mb-0">Completed</p>
 
+   </div>
+   </div>
 </div>
-
-</div>
-
-</div>
-
 </div>
 
 <div class="card shadow-sm">
@@ -204,77 +184,46 @@ Manage salon appointments
 <table class="table table-bordered table-hover">
 
 <thead class="table-dark">
-
-<tr>
-
-<th>ID</th>
-<th>Customer</th>
-<th>Staff</th>
-<th>Service</th>
-<th>Date</th>
-<th>Time</th>
-<th>Status</th>
-<th>Actions</th>
-
-</tr>
-
+    <tr>
+        <th>ID</th>
+        <th>Customer</th>
+        <th>Staff</th>
+        <th>Service</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
 </thead>
 
 <tbody>
-
-<?php while($row=mysqli_fetch_assoc($result)){ ?>
-
-<tr>
-
-<td><?php echo $row['id']; ?></td>
-
-<td><strong><?php echo $row['customer_name']; ?></strong></td>
-
-<td><?php echo $row['full_name']; ?></td>
-
-<td><?php echo $row['service_name']; ?></td>
-
-<td><?php echo date("d M Y",strtotime($row['appointment_date'])); ?></td>
-
-<td><?php echo date("h:i A",strtotime($row['appointment_time'])); ?></td>
-
-<td>
-
-<?php
-
-$status=strtolower($row['status']);
+    <?php while($row=mysqli_fetch_assoc($result)){ ?>
+    <tr>
+        <td><?php echo $row['id']; ?></td>
+        <td><strong><?php echo $row['customer_name']; ?></strong></td>
+        <td><?php echo $row['full_name']; ?></td>
+        <td><?php echo $row['service_name']; ?></td>
+        <td><?php echo date("d M Y",strtotime($row['appointment_date'])); ?></td>
+        <td><?php echo date("h:i A",strtotime($row['appointment_time'])); ?></td>
+        <td><?php
+               $status=strtolower($row['status']);
 
 if($status=="pending"){
-
-echo "<span class='status-badge status-pending'>Pending</span>";
-
+        echo "<span class='status-badge status-pending'>Pending</span>";
 }elseif($status=="completed"){
-
-echo "<span class='status-badge status-completed'>Completed</span>";
-
+        echo "<span class='status-badge status-completed'>Completed</span>";
 }else{
+       echo "<span class='status-badge status-cancelled'>Cancelled</span>";
 
-echo "<span class='status-badge status-cancelled'>Cancelled</span>";
+}?></td>
 
-}
-
-?>
-
-</td>
-
-<td>
-
-<a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm me-1">
-
-<i class="fas fa-edit"></i>
-
-</a>
-
-<button class="btn btn-danger btn-sm"
-data-bs-toggle="modal"
-data-bs-target="#deleteModal<?php echo $row['id']; ?>">
-
-<i class="fas fa-trash"></i>
+        <td>
+          <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm me-1">
+            <i class="fas fa-edit"></i>
+        </a>
+        
+        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $row['id']; ?>">
+            <i class="fas fa-trash"></i>
 
 </button>
 
