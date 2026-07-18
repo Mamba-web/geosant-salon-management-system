@@ -171,7 +171,6 @@ Password resets are performed securely by an authorized administrator.
 </div>
 
 </div>
-
 </div>
 
 <script src="../assets/js/bootstrap.bundle.min.js"></script>
