@@ -136,7 +136,7 @@ value="<?php echo $service['id']; ?>"
 
 </div>
 
-<div class="mb-3">
+<!-- <div class="mb-3">
 
 <label>Time</label>
     <input
@@ -167,7 +167,7 @@ value="<?php echo $service['id']; ?>"
          Cancelled
     </option>
 </select>
-</div>
+</div> -->
 
 <button class="btn btn-success">
 Update Appointment
